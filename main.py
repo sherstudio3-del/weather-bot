@@ -7,6 +7,17 @@ TOKEN = "8665348129:AAG_fP0yB_Cf7wnMma5asEiDsgRJDozngl8"
 API_KEY = "73ec21bc9dbea02959c92a6b228dbd1d"
 
 users = set()
+
+async def stats(update: Update, context: ContextTypes.DEFAULT_TYPE):
+
+    admin_id = 123456789
+
+    if update.message.chat_id != admin_id:
+        return
+
+    count = len(users)
+
+    await update.message.reply_text(f"Botdan foydalanayotganlar soni: {count} ta")
 # ==============================================
 
 keyboard = [[KeyboardButton("📍 Lokatsiya yuborish", request_location=True)]]
@@ -127,6 +138,7 @@ app = ApplicationBuilder().token(TOKEN).build()
 app.add_handler(CommandHandler("start", start))
 app.add_handler(MessageHandler(filters.LOCATION, location))
 app.add_handler(CommandHandler("send", send))
+app.add_handler(CommandHandler("stats", stats))
 
 print("Bot ishga tushdi...")
 
