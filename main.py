@@ -18,6 +18,25 @@ async def stats(update: Update, context: ContextTypes.DEFAULT_TYPE):
     count = len(users)
 
     await update.message.reply_text(f"Botdan foydalanayotganlar soni: {count} ta")
+
+async def send_photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
+
+    admin_id = 8006832970
+
+    if update.message.chat_id != admin_id:
+        return
+
+    if not update.message.photo:
+        return
+
+    photo = update.message.photo[-1].file_id
+    caption = update.message.caption
+
+    for user in users:
+        try:
+            await context.bot.send_photo(chat_id=user, photo=photo, caption=caption)
+        except:
+            pass
 # ==============================================
 
 keyboard = [[KeyboardButton("📍 Lokatsiya yuborish", request_location=True)]]
@@ -139,6 +158,7 @@ app.add_handler(CommandHandler("start", start))
 app.add_handler(MessageHandler(filters.LOCATION, location))
 app.add_handler(CommandHandler("send", send))
 app.add_handler(CommandHandler("stats", stats))
+app.add_handler(MessageHandler(filters.PHOTO, send_photo))
 
 print("Bot ishga tushdi...")
 
