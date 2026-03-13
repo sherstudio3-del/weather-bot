@@ -3,7 +3,7 @@ from telegram import Update, ReplyKeyboardMarkup, KeyboardButton
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters, ContextTypes
 
 # ====== FAQAT SHU 2 TASINI O'ZGARTIRASIZ ======
-TOKEN = "8665348129:AAG_fP0yB_Cf7wnMma5asEiDsgRJDozngl8"
+TOKEN = "8665348129:AAH89AYrBkh6z9dyi5DO8dnlKsboTKHDeTw"
 API_KEY = "73ec21bc9dbea02959c92a6b228dbd1d"
 
 users = set()
