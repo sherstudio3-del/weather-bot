@@ -10,7 +10,7 @@ users = set()
 
 async def stats(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
-    admin_id = 123456789
+    admin_id = 8006832970
 
     if update.message.chat_id != admin_id:
         return
